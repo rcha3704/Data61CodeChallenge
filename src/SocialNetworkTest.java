@@ -7,25 +7,26 @@ import org.junit.Test;
 public class SocialNetworkTest {
 
 	/* Tests with dummy dataset */
+	String sample = "sample.json";
 	
 	@Test
 	public void testLoadsDataSuccessfully() {
 		SocialNetwork network = new SocialNetwork();
-		boolean res = network.loadData("sample.json");
+		boolean res = network.loadData(sample);
 		assertTrue(res);
 	}
 	
 	@Test
 	public void testReturnsCorrectNumberOfUsers() {
 		SocialNetwork network = new SocialNetwork();
-		network.loadData("sample.json");
+		network.loadData(sample);
 		assertEquals(network.numUsers(), new Long(network.getMap().numVertices()));
 	}
 	
 	@Test
 	public void testPathWithNullSource() {
 		SocialNetwork network = new SocialNetwork();
-		network.loadData("sample.json");
+		network.loadData(sample);
 		User<Long,Double,Double> d = network.getUser(new Long(1));
 		assertEquals(network.pathFrom(null, d),null);
 	}
@@ -33,7 +34,7 @@ public class SocialNetworkTest {
 	@Test
 	public void testPathWithNullDestination() {
 		SocialNetwork network = new SocialNetwork();
-		network.loadData("sample.json");
+		network.loadData(sample);
 		User<Long,Double,Double> s = network.getUser(new Long(1));
 		assertEquals(network.pathFrom(s, null),null);
 	}
@@ -41,7 +42,7 @@ public class SocialNetworkTest {
 	@Test
 	public void testPathWithSourceDestinationBothNull() {
 		SocialNetwork network = new SocialNetwork();
-		network.loadData("sample.json");
+		network.loadData(sample);
 		assertEquals(network.pathFrom(null, null),null);
 	}
 
@@ -49,7 +50,7 @@ public class SocialNetworkTest {
 	@Test
 	public void testDistanceIsUpdated() {
 		SocialNetwork network = new SocialNetwork();
-		network.loadData("sample.json");
+		network.loadData(sample);
 		
 		Vertex<Long,Double,Double> s = network.getUser(new Long(1));
 		
@@ -65,7 +66,7 @@ public class SocialNetworkTest {
 	@Test
 	public void testFriendsDistancesAreUpdated() {
 		SocialNetwork network = new SocialNetwork();
-		network.loadData("sample.json");
+		network.loadData(sample);
 		
 		User<Long,Double,Double> s = network.getUser(new Long(1));
 		s.setDistance(new Double(0));
@@ -83,7 +84,7 @@ public class SocialNetworkTest {
 	@Test
 	public void testPredecessorIsUpdated() {
 		SocialNetwork network = new SocialNetwork();
-		network.loadData("sample.json");
+		network.loadData(sample);
 		
 		User<Long,Double,Double> s = network.getUser(new Long(1));
 		
@@ -123,7 +124,7 @@ public class SocialNetworkTest {
 	@Test
 	public void testfindShortestPathBetween1and4() {
 		SocialNetwork network = new SocialNetwork();
-		network.loadData("sample.json");
+		network.loadData(sample);
 		
 		User<Long,Double,Double> s = network.getUser(new Long(1));
 		User<Long,Double,Double> d = network.getUser(new Long(4));
@@ -137,7 +138,7 @@ public class SocialNetworkTest {
 	@Test
 	public void testfindShortestPathToItself() {
 		SocialNetwork network = new SocialNetwork();
-		network.loadData("sample.json");
+		network.loadData(sample);
 		
 		User<Long,Double,Double> s = network.getUser(new Long(4));
 		User<Long,Double,Double> d = network.getUser(new Long(4));
@@ -150,7 +151,7 @@ public class SocialNetworkTest {
 	@Test
 	public void testfindShortesPathBetween5and8() {
 		SocialNetwork network = new SocialNetwork();
-		network.loadData("sample.json");
+		network.loadData(sample);
 		
 		User<Long,Double,Double> s = network.getUser(new Long(5));
 		User<Long,Double,Double> d = network.getUser(new Long(8));
@@ -164,7 +165,7 @@ public class SocialNetworkTest {
 	@Test
 	public void testFindShortestPathBetween13and16() {
 		SocialNetwork network = new SocialNetwork();
-		network.loadData("sample.json");
+		network.loadData(sample);
 		
 		User<Long,Double,Double> s = network.getUser(new Long(13));
 		User<Long,Double,Double> d = network.getUser(new Long(16));
@@ -175,11 +176,12 @@ public class SocialNetworkTest {
 	}
 	
 	/* Tests with full dataset */
+	String task = "task.json";
 	
 	@Test
 	public void testfindShortestPathBetween4and772233() {
 		SocialNetwork network = new SocialNetwork();
-		network.loadData("task.json");
+		network.loadData(task);
 		
 		User<Long,Double,Double> s = network.getUser(new Long(4));
 		User<Long,Double,Double> d = network.getUser(new Long(772233));
@@ -193,7 +195,7 @@ public class SocialNetworkTest {
 	@Test
 	public void testfindShortestPathBetween4and3306() {
 		SocialNetwork network = new SocialNetwork();
-		network.loadData("task.json");
+		network.loadData(task);
 		
 		User<Long,Double,Double> s = network.getUser(new Long(4));
 		User<Long,Double,Double> d = network.getUser(new Long(3306));
@@ -207,7 +209,7 @@ public class SocialNetworkTest {
 	@Test
 	public void testfindShortestPathBetween17and11270() {
 		SocialNetwork network = new SocialNetwork();
-		network.loadData("task.json");
+		network.loadData(task);
 		
 		User<Long,Double,Double> s = network.getUser(new Long(17));
 		User<Long,Double,Double> d = network.getUser(new Long(11270));
@@ -220,7 +222,7 @@ public class SocialNetworkTest {
 	@Test
 	public void testShortestPathDoesNotExistBetween1and2() {
 		SocialNetwork network = new SocialNetwork();
-		network.loadData("task.json");
+		network.loadData(task);
 		
 		User<Long,Double,Double> s = network.getUser(new Long(1));
 		User<Long,Double,Double> d = network.getUser(new Long(2));
@@ -233,7 +235,7 @@ public class SocialNetworkTest {
 	@Test
 	public void testFindShortestPathBetween17and66741() {
 		SocialNetwork network = new SocialNetwork();
-		network.loadData("task.json");
+		network.loadData(task);
 		
 		User<Long,Double,Double> s = network.getUser(new Long(17));
 		User<Long,Double,Double> d = network.getUser(new Long(66741));

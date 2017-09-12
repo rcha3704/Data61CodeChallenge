@@ -10,6 +10,12 @@ Using this social network dataset, the task is to create a function that given t
 
 Implemented Dijkstra's Alogorithm to find the shortest path between two people in the network through the strongest coders. Used a min-heap based Priority Queue. Used a HashMap in an adjacency list structure for performance gains. The algorithm returns when the destination is found instead of calculating shortest path to all the users in the graph.
 
+# Run/Build Instructions
+
+1. Please download the dataset and place it in the root directory of the project i.e. Data61Challenge.
+2. Please ensure that you have added the json-simple-1.1.jar to the project build path. I have included it with the project.
+3. Please go to SocialNetworkTest.java and "Run" the tests.
+
 # Note
 
 Please download the dataset before running the tests (SocialNetworkTest.java).
